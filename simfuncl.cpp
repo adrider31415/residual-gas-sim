@@ -14,16 +14,16 @@
 #include "simutils.h"
 using namespace std;
 
-double s = 0.3;
-double l = 10.*s;
-double d = s+0.025;
-string sstr = to_string(s);
-
-
 
 
 Vec3 sim_pos(int nsim,bool write, int ntherm = 1000, string fbase = "junk")
 {
+
+  double sep = 0.3;
+  double l = 10.*sep;
+  double d = sep+0.025;
+  string sstr = to_string(sep);
+  
   //initialize sim
   time_t timer = time(NULL);
   int seed = timer + getpid();
