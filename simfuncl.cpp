@@ -83,6 +83,7 @@ srand(seed);
   return vret;
 }
 
+
 void rep_sim(int nreps, string fbase, int ncollisions = 100000000)
 {
   double xarr[nreps];
