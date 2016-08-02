@@ -1,6 +1,7 @@
 #include <iterator>
 #include <cctype>
 #include <cmath>
+#include <ctime>
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -10,12 +11,14 @@
 #include "spline.h"
 #include <cstdio>
 #include <cstdlib>
+#include <math.h>
 
 double r01();
 double cdf(double vf);
 bool checkSort(std::vector<double> vec);
 
 int main() {
+  //srand(time(NULL));
    std::vector<double> Parr;
    std::vector<double> Vfarr;
 
@@ -42,10 +45,6 @@ int main() {
      std::cout<<"true"<<std::endl;
    } else {
      std::cout<<"false"<<std::endl;
-   }
-
-     for(int i = Parr.size()-10 ;i < Parr.size(); i++){
-    std::cout<< "" << Vfarr[i]<<", "<<Parr[i]<<std::endl;
    }
 
    // need to use namespace tk;
@@ -87,7 +86,14 @@ double r01(){
 }
 
 double cdf(double vf){
-  return 0.5*(2.0-(exp(-pow(vf,2.0)/2.0)*(2.0+pow(vf,2.0))));
+  // return 0.5*(2.0-(exp(-pow(vf,2.0)/2.0)*(2.0+pow(vf,2.0))));
+  double result;
+  double A;
+  A = erf(vf / sqrt(2.0));
+  double B;
+  B = sqrt(2.0/3.14159265) * vf * exp(-pow(vf, 2.0)/2.0);
+  result = A-B;
+  return result;
 }
 
 bool checkSort(std::vector<double> vec){
@@ -100,7 +106,6 @@ bool checkSort(std::vector<double> vec){
   }
   return true;
 }
-
 
 
 
