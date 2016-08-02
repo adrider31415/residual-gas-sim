@@ -1,0 +1,66 @@
+#include <iterator>
+#include <cctype>
+#include <cmath>
+#include <fstream>
+#include <iostream>
+#include <sstream>
+#include <string>
+#include <vector>
+#include <cstdlib>
+#include "spline.h"
+#include <cstdio>
+#include <cstdlib>
+
+double r01();
+double cdf(double vf);
+
+int main() {
+   std::vector<double> Parr;
+   std::vector<double> Vfarr;
+
+   for(int i = 0; i < 100; i++){
+     Vfarr.push_back((20.0/10000.0) * 1.0*i);
+   }
+
+   for(int i = 0; i < Vfarr.size(); i++){
+       double Vf_i = Vfarr[i];
+       Parr.push_back(cdf(Vf_i));
+   }
+  
+   tk::spline s;
+   s.set_points(Parr, Vfarr);
+     
+   std::vector<double> Ps;
+   std::vector<double> Vs;
+
+   for(int i = 0; i < 1e7; i++){
+     Ps.push_back(r01());
+   }
+
+   for(int i = 0; i < Ps.size(); i++){
+     Vs.push_back(s(Ps[i]));
+   }
+
+   std::ofstream f("somefile.txt");
+   std::ostream_iterator<double> output_iterator(f, "\n");
+   std::copy(Vs.begin(), Vs.end(), output_iterator);
+
+   std::cout << "Look Imma dance! Imma sing! Imma so happy! Wahahaha!" << std::endl;
+
+   return 0;
+}
+
+double r01(){
+   double randn = rand();
+   return (double)randn/RAND_MAX;
+}
+
+double cdf(double vf){
+  return 0.5*(2.0-exp(-pow(vf,2.0)/2.0)*(2.0+pow(vf,2.0)));
+}
+
+
+
+
+
+

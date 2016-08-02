@@ -1,0 +1,17 @@
+// This header file doesn't do much, but it's good to demonstrate that it's
+// possible to create and edit header files
+
+#ifndef PROB_H
+#define PROB.H
+
+#include <iostream>
+#include <vector>
+
+class prob {
+public: 
+
+double interpol_spline(vector<double> Ps, Vector<double> Vs);
+
+};
+
+#endif
