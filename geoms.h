@@ -1,6 +1,8 @@
 #ifndef GEOMS_H
 #define GEOMS_H
 
+#include "cdf.h"
+
 
 double r01()
 {
@@ -188,7 +190,7 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    p.x0 = p.p_t(tnmin.tmin);
    double theta = asin(sqrt(r01()));
    double phi = 2.*PI*r01();
-   double vf = 1.;
+   double vf = vel_returned();
    /*if (sphereb)
      {
        vf = 2.;
