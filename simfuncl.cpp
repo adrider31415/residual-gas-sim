@@ -8,18 +8,18 @@
 #include <sstream>
 #include <unistd.h>
 #include <stdio.h>
+#include <chrono>
 #include "linalg.h"
 #include "particle.h"
 #include "geoms.h"
 #include "simutils.h"
+typedef std::chrono::high_resolution_clock Clock;
 using namespace std;
 
 double s = 0.3;
 double l = 10.*s;
 double d = s+0.025;
 string sstr = to_string(s);
-
-
 
 
 Vec3 sim_pos(int nsim,bool write, int ntherm = 1000, string fbase = "junk")
@@ -83,7 +83,7 @@ srand(seed);
   return vret;
 }
 
-void rep_sim(int nreps, string fbase, int ncollisions = 100000000)
+void rep_sim(int nreps, string fbase, int ncollisions = 1000000)
 {
   double xarr[nreps];
   double yarr[nreps];
@@ -101,7 +101,14 @@ void rep_sim(int nreps, string fbase, int ncollisions = 100000000)
 
 int main(int argc, char* argv[])
 {
+  auto t1 = Clock::now();
   rep_sim(10, argv[1]);
+  auto t2 = Clock::now();
+
+std::cout << "Delta t2-t1: " 
+              << std::chrono::duration_cast<std::chrono::nanoseconds>(t2 - t1).count()
+              << " nanoseconds" << std::endl;
+
   return 0;
   }
 

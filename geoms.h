@@ -1,14 +1,16 @@
 #ifndef GEOMS_H
 #define GEOMS_H
 
+#include <vector>
 #include "cdf.h"
 
+std::vector<double> Vs_dist = vel_returned();
+int getRandomInt(int min, int max);
 
-double r01()
-{
-  return (double)rand() / (double)RAND_MAX;
-}
-
+//double r01()
+//{
+//  return (double)rand() / (double)RAND_MAX;
+//}
 
 
 //class to store minimum time to collision and minimum time normal vector.
@@ -190,7 +192,10 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    p.x0 = p.p_t(tnmin.tmin);
    double theta = asin(sqrt(r01()));
    double phi = 2.*PI*r01();
-   double vf = vel_returned();
+
+   int randomInt = getRandomInt(0, Vs_dist.size()-1);
+
+   double vf = Vs_dist[randomInt];
    /*if (sphereb)
      {
        vf = 2.;
@@ -209,6 +214,12 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    return p;
 }
 
-
+int getRandomInt(int min, int max){
+  srand(time(NULL));
+  int rand_int;
+  double fraction = 1.0 / (double) (RAND_MAX + 1.0);
+  rand_int = (int)(rand() * fraction * (max-min+1) + min);
+  return rand_int;
+}
 
 #endif
