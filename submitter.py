@@ -3,9 +3,10 @@ import subprocess
 import time
 
 #need to change to your working directory.
-outpath = "/afs/.ir.stanford.edu/users/a/r/arider/gas_sim_data/s_30mum_scaling"
+outpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/gasSimData"
 if not os.path.exists(outpath):
     os.makedirs(outpath)
+#check path exists, if not creates
     print outpath
 
 

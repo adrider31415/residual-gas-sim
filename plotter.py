@@ -9,7 +9,8 @@ import random
 import glob
 import os
 
-cpath = "/afs/.ir.stanford.edu/users/a/r/arider/gas_sim_data/s_100mum"
+#change to my path
+cpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/gasSimData"
 
 
 def build_arr(fs):
