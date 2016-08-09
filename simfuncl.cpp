@@ -101,6 +101,7 @@ void rep_sim(int nreps, string fbase, int ncollisions = 100000000)
 
 int main(int argc, char* argv[])
 {
+  //Vec3 vec3 = sim_pos(100, 1);
   rep_sim(10, argv[1]);
   return 0;
   }
