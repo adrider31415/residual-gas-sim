@@ -16,15 +16,15 @@
 #include <cstdlib>
 #include <math.h>
 #include <time.h>
-#include "randomNums.h"
+#include "cdf.h"
 
-double rand01();
+double r01();
 double cdf(double vf);
 //int getRandomInt(int min, int max);
 //bool checkSort(std::vector<double> vec);
 //double v(int rand_int);
 
-double vel_returned() {
+std::vector<double> vel_returned() {
   //srand(time(NULL));
    std::vector<double> Parr;
    std::vector<double> Vfarr;
@@ -64,36 +64,24 @@ double vel_returned() {
 
    // generate random numbers and store into Vs
    for(int i = 0; i < 1e7; i++){
-     double randnum = rand01();
+     double randnum = r01();
      Ps.push_back(randnum);
    }
 
    // Get Vs values to store in vector from using s()
    std::vector<double> Vs;
-
-   int counter = 0;
-
     for(int i = 0; i < Ps.size(); i++){
      
     double Ps_i = Ps[i];
-     double s_Psi = s(Ps_i);
-     if(s_Psi <= 1e-10){
-       counter++;
-     }   
+     double s_Psi = s(Ps_i);   
     Vs.push_back(s_Psi);
      
     }
 
-    if(counter != 0){
-      std::cout<<"counter "<<counter<<std::endl;
-    }
-
-    int randInt = getRandomInt();
-    //std::cout<<Vs[randInt] << "" <<std::endl;
-    return Vs[randInt];
+    return Vs;
 
     //std::ofstream f("somefile.txt");
-    //std::ostream_iterator<double> output_iterator(f, "\n");
+    // std::ostream_iterator<double> output_iterator(f, "\n");
     //std::copy(Vs.begin(), Vs.end(), output_iterator);
 
     // std::cout << "Done" << std::endl;
@@ -103,7 +91,7 @@ double vel_returned() {
     //return Vs[randomInteger];
 }
 
-double rand01(){
+double r01(){
    double randn = rand();
    return (double)randn/RAND_MAX;
 }

@@ -1,27 +1,17 @@
 #ifndef GEOMS_H
 #define GEOMS_H
 
-#include "randomNums.h"
-#include "cdf.h"
-#include <fstream>
-#include <iostream>
-#include <sstream>
-#include <string>
 #include <vector>
-#include <cstdlib>
-#include "spline.h"
-#include <cstdio>
-#include <cstdlib>
-#include <math.h>
-#include <time.h>
-//#include "cdf.h"
+#include "cdf.h"
 
-//std::vector<double> Vs_final = vel_returned();
+std::vector<double> Vs_dist = vel_returned();
+int getRandomInt(int min, int max);
 
-double r01()
-{
-  return (double)rand() / (double)RAND_MAX;
-}
+//double r01()
+//{
+//  return (double)rand() / (double)RAND_MAX;
+//}
+
 
 //class to store minimum time to collision and minimum time normal vector.
 class T_n
@@ -203,11 +193,9 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    double theta = asin(sqrt(r01()));
    double phi = 2.*PI*r01();
 
-   //std::vector<double> Vs_final;
-   //Vs_final = vel_returned();
+   int randomInt = getRandomInt(0, Vs_dist.size()-1);
 
-   double vf = vel_returned(); //1.; 
-
+   double vf = Vs_dist[randomInt];
    /*if (sphereb)
      {
        vf = 2.;
@@ -226,6 +214,12 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    return p;
 }
 
-
+int getRandomInt(int min, int max){
+  srand(time(NULL));
+  int rand_int;
+  double fraction = 1.0 / (double) (RAND_MAX + 1.0);
+  rand_int = (int)(rand() * fraction * (max-min+1) + min);
+  return rand_int;
+}
 
 #endif
