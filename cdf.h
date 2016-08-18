@@ -101,3 +101,5 @@ double rand01(){
    double randn = rand();
    return randn/RAND_MAX;
 }
+
+#endif
