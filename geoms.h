@@ -1,15 +1,15 @@
 #ifndef GEOMS_H
 #define GEOMS_H
 
-#include "randomNums.h"
-#include "cdf.h"
+//#include "randomNums.h"
+//#include "cdf.h"
 #include <fstream>
 #include <iostream>
 #include <sstream>
 #include <string>
 #include <vector>
 #include <cstdlib>
-#include "spline.h"
+//#include "spline.h"
 #include <cstdio>
 #include <cstdlib>
 #include <math.h>
@@ -180,7 +180,7 @@ Cantilever::Cantilever(double xn, double xm, double yn, double ym, double zn, do
    xmin = xn; xmax = xm; ymin = yn; ymax = ym; zmin = zn; zmax = zm;
 }
 
-Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double thresh = 1e-25)
+Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double vf_set, double thresh = 1e-25)
   
  {
    T_n tnmin = b.tn_min(p);
@@ -205,7 +205,7 @@ Particle collision(Particle p, Box b, Sphere s, Cantilever c, Rotater r, double 
    //std::vector<double> Vs_final;
    //Vs_final = vel_returned();
 
-   double vf = vel_returned(); //1.; 
+   double vf = vf_set; //1.;
 
    /*if (sphereb)
      {
