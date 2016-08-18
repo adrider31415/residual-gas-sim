@@ -10,7 +10,7 @@ import glob
 import os
 
 #change to my path
-cpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/gasSimData"
+cpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/newForceData_maxBoltz"
 
 
 def build_arr(fs):

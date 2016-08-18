@@ -3,7 +3,7 @@ import subprocess
 import time
 
 #need to change to your working directory.
-outpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/gasSimData"
+outpath = "/afs/.ir.stanford.edu/users/c/l/clu2/Documents/newForceData_maxBoltz"
 if not os.path.exists(outpath):
     os.makedirs(outpath)
 #check path exists, if not creates
@@ -11,7 +11,7 @@ if not os.path.exists(outpath):
 
 
 exe = './simfuncl.o'
-numinq = 480
+numinq = 50 #480
 
 def count_q():
     #counts my jobs
