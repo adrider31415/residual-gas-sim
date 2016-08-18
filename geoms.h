@@ -14,7 +14,6 @@
 #include <cstdlib>
 #include <math.h>
 #include <time.h>
-//#include "cdf.h"
 
 //std::vector<double> Vs_final = vel_returned();
 
